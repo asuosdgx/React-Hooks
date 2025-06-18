@@ -6,7 +6,7 @@ export default function Lista(){
     
   return(
         <section>
-            <h2 className="text-xl text-center mt-3 mb-5">Lista de produtos</h2>
+            <p className="text-6xl font-light text-center mt-3 mb-5">Lista de produtos</p>
             <Produto/>   
         </section>
     )

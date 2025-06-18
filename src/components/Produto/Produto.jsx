@@ -47,7 +47,7 @@ export default function Produto() {
 
   if (carregando) {
     return (
-      <div className="d-flex justify-content-center align-items-center min-h-48">
+      <div className="flex justify-center items-center min-h-48">
         <span>Carregando produtos...</span>
       </div>
     );
@@ -96,24 +96,24 @@ export default function Produto() {
 
   return (
     <>
-      <div className="m-2">
-        <div className="row ">
+      <div className="m-2 ">
+        <div className="row bg-gray-200">
           {produtos.map((produto) => (
-            <div key={produto._id} className="col-12 col-md-4 col-lg-3 d-flex">
-              <div className="card h-100 shadow-sm bg-dark text-white w-100">
+            <div key={produto._id} className="col-12 mb-3 col-md-4 col-lg-3 d-flex p-3">
+              <div className="border-1 border-black h-100 bg-gray-700 text-white w-100">
                 <img
                   src={produto.imagem}
                   alt={produto.nome}
-                  className="card-img-top object-contain w-[200px]"
+                  className="card-img-top object-contain max-h-80 "
                   
                 />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title text-center">{produto.nome}</h5>
-                  <p className="card-text text-center fw-bold mb-2">
+                <div className=" flex flex-column p-4 mt-2">
+                  <h2 className=" text-center">{produto.nome}</h2>
+                  <p className=" text-center font-bold mb-2">
                     {produto.preco}
                   </p>
                   <p
-                    className="card-text text-center"
+                    className=" text-center"
                     title={produto.descricao}
                   >
                     {produto.descricao}
@@ -125,9 +125,9 @@ export default function Produto() {
         </div>
       </div>
 
-      <section>
-        <Form className="mx-2 p-2" onSubmit={handleSubmit}>
-          <h1 className="text-center mt-5">Cadastro de Produtos</h1>
+      <section >
+        <Form className="mx-2 p-3 text-center" onSubmit={handleSubmit}>
+          <h1 className=" text-center my-3">Cadastro de Produtos</h1>
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridNome">
               <Form.Label>Nome</Form.Label>
@@ -136,7 +136,7 @@ export default function Produto() {
                 placeholder="Nome do Produto"
                 name="nome"
                 value={novoProduto.nome}
-                onChange={handleChange}
+                onChange={handleChange} className="text-center"
               />
             </Form.Group>
 
@@ -148,28 +148,33 @@ export default function Produto() {
                 name="preco"
                 value={novoProduto.preco}
                 onChange={handleChange}
+                className="text-center"
+            
               />
             </Form.Group>
           </Row>
 
-          <Form.Group className="mb-3" controlId="formGridDescricao">
-            <Form.Label>Descricao</Form.Label>
+          <Form.Group className="mb-3 text-center" controlId="formGridDescricao">
+            <Form.Label >Descricao</Form.Label>
             <Form.Control
               placeholder="Descrição do Produto"
               name="descricao"
               value={novoProduto.descricao}
               onChange={handleChange}
+              className="text-center"
             />
           </Form.Group>
 
-          <Form.Group controlId="formFile" className="mb-3">
+          <Form.Group controlId="formFile" className="mb-3 text-center">
             <Form.Label>Insira uma imagem do produto</Form.Label>
-            <Form.Control type="file" name="imagem" onChange={handleChange} />
+            <Form.Control type="file" name="imagem" onChange={handleChange}  />
           </Form.Group>
 
-          <Button variant="warning" type="submit">
-            Submit
-          </Button>
+          <div className="flex w-full justify-center mb-3">
+            <Button variant="secondary" type="submit" >
+              Enviar
+            </Button>
+          </div>
         </Form>
       </section>
     </>
